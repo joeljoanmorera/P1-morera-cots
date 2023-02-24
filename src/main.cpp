@@ -1,6 +1,8 @@
 #include <Arduino.h>
+
 int Lectura = 0;
 float Temperatura =0;
+
 void setup() {
   Serial.begin(115200);
   Serial.println("Hola Mundo!");
@@ -10,6 +12,7 @@ void setup() {
 }
 
 void loop() {
+
 digitalWrite(23,HIGH);
 Serial.print("SORTIDA: ");
 Serial.print("ON");
