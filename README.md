@@ -70,7 +70,8 @@ int lecture = 0;    //Declaración de la variable en la que guardaremos el valor
 void setup()
 {
     Serial.begin(115200);           //Velocidad de transimision
-    //pinMode(13, INPUT)            //Definimos el pin 13 como pin de entrada
+    pinMode(13, INPUT);             //Definimos el pin 13 como pin de entrada
+    pinMode(15, OUTPUT);            //Definimos el pin 15 como pin de salida
 }
 
 //Codigo que se ejecuta repetitivamente:
@@ -83,7 +84,7 @@ void loop()
     Serial.print(" mV");
     Serial.println("");
 
-    analogWrite(15);                          //Sacamos por el pin 15 el valor guardado en "lecture"
+    analogWrite(15, lecture);                          //Sacamos por el pin 15 el valor guardado en "lecture"
     
     delay(500);                             // Delay de 500 milisegundos
 }

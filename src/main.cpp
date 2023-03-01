@@ -7,6 +7,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Hola Mundo!");
   pinMode(23,OUTPUT);
+  pinMode(15, OUTPUT);
 
   // put your setup code here, to run once:
 }
@@ -30,6 +31,7 @@ Serial.print("Voltatge d'entrada: ");
 Serial.print(Lectura);
 Serial.print(" mV");
 Serial.println("");
+analogWrite(15,Lectura);
 delay(500);
 
 
@@ -39,7 +41,5 @@ Serial.print("OFF");
 Serial.println("");
 
 delay(500);
-
-
   // put your main code here, to run repeatedly:
 }
