@@ -55,7 +55,7 @@ Por orta parte, el **diagrama de tiempos** del programa es:
 
 **Tiempo libre del procesador:**
 ## 2. Leer valor analógico, mostrarlo y escribirlo
-En este punto el objetivo del código consiste en leer un valor analógico por un pin, en concreto el 13, imprimir el valor leído por pantalla y sacarlo por otro pin, en concreto el X.
+En este punto el objetivo del código consiste en leer un valor analógico por un pin, en concreto el 13, imprimir el valor leído por pantalla y sacarlo por otro pin, en concreto el 15.
 
 
 El **codigo del programa** es:
@@ -83,7 +83,7 @@ void loop()
     Serial.print(" mV");
     Serial.println("");
 
-    analogWrite();                          //Sacamos por el pin X el valor guardado en "lecture"
+    analogWrite(15);                          //Sacamos por el pin 15 el valor guardado en "lecture"
     
     delay(500);                             // Delay de 500 milisegundos
 }
@@ -95,11 +95,11 @@ El **diagrama de flujo** del programa es el siguiente:
 
 <div class="mermaid">
 graph TD;
-    A[Lectura Valor Pin 13]       --> B;
-    B[Print del valor]   --> C;
-    C[Salida del valor por Pin X] --> D;
-    D[LED OFF]      --> E;
-    E[Dealy 500 ms] --> A;
+    A[Lectura Valor Pin 13]         --> B;
+    B[Print del valor]              --> C;
+    C[Salida Valor Pin 15]   --> D;
+    D[LED OFF]                      --> E;
+    E[Dealy 500 ms]                 --> A;
 </div>
 
 
@@ -111,7 +111,7 @@ Por último, el **diagrama de tiempos** del programa es:
 { signal : [
   { name: "CLK",  wave: "p........" },
   { name: "Lectura pin 13",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
-  { name: "Escritura pin X",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
+  { name: "Escritura pin 15",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
 ]}
 ```
 ## 3. Leer valor del sensor de temperatura interno
@@ -147,9 +147,9 @@ El **diagrama de flujo** del programa es:
 
 <div class="mermaid">
 graph TD;
-    A[Lectura valor tempreatura]       --> B;
-    B[Print del valor]   --> C;
-    C[Delay 500 ms] --> A;
+    A[Lectura valor tempreatura]    --> B;
+    B[Print del valor]              --> C;
+    C[Delay 500 ms]                 --> A;
 </div>
 
 
