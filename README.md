@@ -2,7 +2,7 @@
 ## 1. Blink
 El resultado de este código consiste en hacer parpadear el led integrado en la placa cada 500 milisegundos y imprimir por pantalla el estado del mismo.
 
-A continuación aparece el código del programa:
+A continuación aparece el **código del programa**:
 
 
 ```c
@@ -41,6 +41,7 @@ graph TD;
     F[Dealy 500 ms] --> A;
 </div>
 
+
 Por orta parte, el **diagrama de tiempos** del programa es:
 
 
@@ -48,13 +49,18 @@ Por orta parte, el **diagrama de tiempos** del programa es:
 
 { signal : [
   { name: "CLK",  wave: "p........" },
-  { name: "LED",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
+  { name: "Estado LED",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
 ]}
 ```
 
 **Tiempo libre del procesador:**
-## 2. Leer valor analógico y mostrarlo
+## 2. Leer valor analógico, mostrarlo y escribirlo
 En este punto el objetivo del código consiste en leer un valor analógico por un pin, en concreto el 13, imprimir el valor leído por pantalla y sacarlo por otro pin, en concreto el X.
+
+
+El **codigo del programa** es:
+
+
 ```c
 #include <Arduino.h>
 
@@ -78,11 +84,40 @@ void loop()
     Serial.println("");
 
     analogWrite();                          //Sacamos por el pin X el valor guardado en "lecture"
+    
+    delay(500);                             // Delay de 500 milisegundos
 }
 ```
 
+
+El **diagrama de flujo** del programa es el siguiente:
+
+
+<div class="mermaid">
+graph TD;
+    A[Lectura Valor Pin 13]       --> B;
+    B[Print del valor]   --> C;
+    C[Salida del valor por Pin X] --> D;
+    D[LED OFF]      --> E;
+    E[Dealy 500 ms] --> A;
+</div>
+
+
+Por último, el **diagrama de tiempos** del programa es:
+
+
+```wavedrom
+
+{ signal : [
+  { name: "CLK",  wave: "p........" },
+  { name: "Lectura pin 13",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
+  { name: "Escritura pin X",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
+]}
+```
 ## 3. Leer valor del sensor de temperatura interno
 Por último, este código nos mostrara por pantalla el valor que lee el sensor que tempreatura interno del procesador.
+
+El **codigo del programa** es el siguiente:
 ```c
 #include <Arduino.h>
 
@@ -103,5 +138,28 @@ void loop()
     Serial.print(Temperatura);
     Serial.print(" Cº");
     Serial.println("");
+
+    delay(500);                             // Delay de 500 milisegundos
 }
+```
+
+El **diagrama de flujo** del programa es:
+
+<div class="mermaid">
+graph TD;
+    A[Lectura valor tempreatura]       --> B;
+    B[Print del valor]   --> C;
+    C[Delay 500 ms] --> A;
+</div>
+
+
+Por último, el **diagrama de tiempos** del programa es:
+
+
+```wavedrom
+
+{ signal : [
+  { name: "CLK",  wave: "p........" },
+  { name: "LECTURA",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
+]}
 ```
