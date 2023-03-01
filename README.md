@@ -1,6 +1,10 @@
 # Practica 1. Gerard Cots y Joel J. Morera
 ## 1. Blink
 El resultado de este código consiste en hacer parpadear el led integrado en la placa cada 500 milisegundos y imprimir por pantalla el estado del mismo.
+
+A continuación aparece el código del programa:
+
+
 ```c
 #include <Arduino.h>
 
@@ -24,6 +28,30 @@ void loop()
     delay(500);                         //Espera de 500 ms
 }
 ```
+
+El **diagrama de flujo** del programa es el siguiente:
+
+<div class="mermaid">
+graph TD;
+    A[LED ON]       --> B;
+    B[Print 'ON']   --> C;
+    C[Delay 500 ms] --> D;
+    D[LED OFF]      --> E;
+    E[Print 'OFF']  --> F;
+    F[Dealy 500 ms] --> A;
+</div>
+
+Por orta parte, el **diagrama de tiempos** del programa es:
+
+
+```wavedrom
+
+{ signal : [
+  { name: "CLK",  wave: "p........" },
+  { name: "LED",  wave: "545454545", data: "ON OFF ON OFF ON OFF ON OFF ON" },
+]}
+```
+
 **Tiempo libre del procesador:**
 ## 2. Leer valor analógico y mostrarlo
 En este punto el objetivo del código consiste en leer un valor analógico por un pin, en concreto el 13, imprimir el valor leído por pantalla y sacarlo por otro pin, en concreto el X.
